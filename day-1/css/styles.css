@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e7ebff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    font-family: sans-serif;
+    padding: 40px 20px;
+    width: 100%;      
+    max-width: 600px;  
+    margin: auto;
+}
+
+#header-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    gap: 5px;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.logo-icon {
+    font-size: 40px;
+    color: rgb(0, 119, 255);
+}
+
+#subheader-title {
+    color: rgb(0, 0, 0);
+    font-weight: lighter;
+}
+
+#input-button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 50px;
+}
+
+#input-field {
+    flex-grow: 1; 
+    border: 1px solid rgb(142, 142, 142);
+    border-radius: 6px;
+    background-color: transparent;
+    padding: 20px 10px;
+    outline: none;
+    font-size: medium;
+}
+
+#add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 119, 255);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-size: large;
+    color: white;
+    cursor: pointer;
+}
+
+#add-button:hover {
+    background-color: rgba(0, 119, 255, 0.8);
+}
+
+#add-icon {
+    font-size: 30px;
+}
+
+#stats {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    flex: 1; 
+    height: 80px;
+    align-items: start;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+#task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.task {
+    background-color: white;
+    width: 100%;
+    padding: 15px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.task input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.task label {
+    flex-grow: 1;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.task input:checked + label {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: rgb(255, 78, 78);
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s;
+}
+
+.task:hover .delete-btn {
+    opacity: 1;
+}
