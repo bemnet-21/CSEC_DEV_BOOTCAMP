@@ -1,31 +1,39 @@
-import React, { useState, type ReactHTMLElement } from 'react'
+import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import { addTask } from '../utils/tasks'
 
 const AddTask = () => {
   const [task, setTask] = useState<string>('')
-  
+
   const handleAdd = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    addTask(task)
+
+    if (!task.trim()) return
+
+    addTask(task.trim())
     setTask('')
-    alert('Added')
   }
+
   return (
-    <form className='flex gap-x-4 place-self-center border border-red-500' onSubmit={handleAdd}>
-        <div className=''>
-            <input
-                type='text'
-                placeholder='Add new task'
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-                className='border border-gray-400 px-4 py-3 rounded-md focus:outline-none'
-            />
-        </div>
-        <button type="submit" className='flex items-center bg-blue-600 text-white px-3 py-3 rounded-md gap-x-2 hover:bg-blue-500'>
-            <FaPlus />
-            <h2>Add</h2>
-        </button>
+    <form
+      className="flex flex-col px-12 gap-4 w-full max-w-xl mx-auto sm:flex-row "
+      onSubmit={handleAdd}
+    >
+      <input
+        type="text"
+        placeholder="Add new task"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+        className="flex-1 border border-gray-400 px-4 py-3 rounded-md focus:outline-none"
+      />
+
+      <button
+        type="submit"
+        className="flex items-center bg-blue-600 text-white px-4 py-3 rounded-md gap-2 hover:bg-blue-500"
+      >
+        <FaPlus />
+        <span>Add</span>
+      </button>
     </form>
   )
 }

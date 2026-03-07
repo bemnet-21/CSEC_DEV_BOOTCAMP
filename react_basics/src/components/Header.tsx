@@ -1,10 +1,9 @@
 import React from 'react'
 import { FaRegCheckCircle } from 'react-icons/fa'
-import { FaCircleCheck } from 'react-icons/fa6'
 
 const Header = () => {
   return (
-    <section className=' flex flex-col place-self-center gap-y-3 py-6 border border-amber-500 '>
+    <section className=' flex flex-col place-self-center gap-y-3 py-6  '>
         <div className='flex items-center gap-x-3'>
             <FaRegCheckCircle className='text-blue-500 text-3xl'/>
             <h1 className='text-4xl'>TO-DO List</h1>
