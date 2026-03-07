@@ -1,9 +1,12 @@
 import './App.css'
+import Header from './components/layout/Header'
 
 function App() {
 
   return (
-    <section className='bg-blue-500'>Job Sphere</section>
+    <section className='font-sans'>
+      <Header />
+    </section>
   )
 }
 
