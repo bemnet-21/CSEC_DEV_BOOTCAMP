@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { MenuModalProps } from '../../interface';
+import { X } from 'lucide-react';
 
 const MenuModal = ({ isOpen, onClose } : MenuModalProps ) => {
   useEffect(() => {
