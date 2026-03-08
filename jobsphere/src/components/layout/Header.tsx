@@ -1,7 +1,10 @@
 import { Menu } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
+import MenuModal from '../Modal/MenuModal'
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+    
   return (
     <header className='w-full h-24 flex justify-between items-center px-6 shadow-xl'>
         <h1 className='text-4xl font-bold text-white bg-primaryBlue p-2 rounded-xl cursor-pointer hover:bg-primaryBlue/20 hover:text-primaryBlue sm:hidden'>JS</h1>
@@ -23,7 +26,8 @@ const Header = () => {
                 Sign in
             </div>
         </div>
-        <Menu className='text-primaryBlue size-8 cursor-pointer lg:hidden' />
+        <Menu className='text-primaryBlue size-8 cursor-pointer lg:hidden' onClick={() => setIsOpen(!isOpen)} />
+        <MenuModal isOpen={isOpen} onClose={() => setIsOpen(!isOpen)} />
     </header>
   )
 }
