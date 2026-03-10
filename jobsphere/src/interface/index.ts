@@ -11,3 +11,11 @@ export interface JobCardProps {
     tags: string[]
     description: string
 }
+
+export interface SavedJobCardProps {
+    id: string
+    company_logo: string
+    company_name: string
+    job_title: string
+    tags: string[]
+}

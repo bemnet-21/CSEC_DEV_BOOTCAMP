@@ -4,7 +4,7 @@ import { Bookmark, Share } from 'lucide-react'
 
 const JobCard = ({ company_logo, company_name, job_title, tags, description } : JobCardProps) => {
   return (
-    <div className='bg-white max-w-160 flex rounded-2xl gap-x-4 py-6 px-4'>
+    <div className='bg-white max-w-160 h-fit flex rounded-2xl gap-x-4 py-6 px-4'>
       <div>
         <img src={company_logo} className='w-64 sm:w-fit'/>
       </div>

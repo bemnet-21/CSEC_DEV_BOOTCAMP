@@ -5,9 +5,16 @@ import Header from './components/layout/Header'
 import JobCard from './components/Job/JobCard'
 import { JOBS } from './constants'
 import type { JobCardProps } from './interface'
+import { useEffect, useState } from 'react'
+import FilterCard from './components/Filter/FilterCard'
+import SavedJobs from './components/SavedJobs/SavedJobs'
 
 function App() {
   const jobs: JobCardProps[] = JOBS
+  const [activePanel, setActivePanel] = useState<'filter' | 'saved' | null>(null)
+  const toggleFilter = () => setActivePanel(prev => prev === 'filter' ? null : 'filter')
+  const toggleSaved = () => setActivePanel(prev => prev === 'saved' ? null : 'saved')
+
   return (
     <section className='font-sans min-h-screen bg-gray-100'>
       <Header />
@@ -18,11 +25,11 @@ function App() {
         <div className='flex flex-col md:flex-row items-center gap-4 w-full'>
           
           <div className='flex items-center gap-x-2 w-full md:w-auto'>
-            <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 cursor-pointer hover:bg-gray-50  flex-1 flex justify-center'>
+            <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 cursor-pointer hover:bg-gray-50  flex-1 flex justify-center lg:hidden' onClick={toggleFilter}>
               <Filter className='text-gray-600' size={20} />
             </div>
             
-            <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 cursor-pointer hover:bg-gray-50  flex-1 flex justify-center'>
+            <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 cursor-pointer hover:bg-gray-50  flex-1 flex justify-center xl:hidden' onClick={toggleSaved}>
               <Bookmark className='text-gray-600' size={20} />
             </div>
           </div>
@@ -33,7 +40,7 @@ function App() {
               <Search className=' shrink-0' size={20} />
               <input 
                 type='text' 
-                placeholder='Job title or company...' 
+                placeholder='Job title, keyword or company...' 
                 className='w-full focus:outline-none text-gray-700 placeholder:text-gray-400 font-medium bg-transparent text-sm sm:text-base'
               />
             </div>
@@ -56,12 +63,23 @@ function App() {
 
           
         </div>
+        <div className='flex justify-center'>
+          {activePanel === 'filter' &&<div className='lg:hidden'><FilterCard /></div> }
+          {activePanel === 'saved' && <div className='xl:hidden'><SavedJobs /></div>}
+        </div>
 
-        {/* Jobs Grid/List */}
-        <div className='grid grid-cols-1 gap-4'>
-          {jobs.map((job) => (
-            <JobCard key={job.id} {...job} />
-          ))}
+        <div className='flex gap-x-4'>
+          <div className='hidden lg:block'>
+            <FilterCard />
+          </div>
+          <div className='grid grid-cols-1 gap-4'>
+            {jobs.map((job) => (
+              <JobCard key={job.id} {...job} />
+            ))}
+          </div>
+          <div className='hidden xl:block'>
+            <SavedJobs />
+          </div>
         </div>
       </main>
     </section>
