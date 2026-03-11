@@ -10,6 +10,13 @@ export interface JobCardProps {
     job_title: string
     tags: string[]
     description: string
+    detail_desc: string
+    rating: number
+    applicants: number
+    responsibilites: string[]
+    location: string
+    experience: string
+    job_type:string
 }
 
 export interface SavedJobCardProps {
