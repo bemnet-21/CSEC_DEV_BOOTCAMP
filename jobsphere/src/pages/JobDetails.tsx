@@ -9,7 +9,7 @@ const JobDetails = () => {
   const job = getJob(id ?? '')
   const navigate = useNavigate()
   return (
-    <section className='flex flex-col font-sans min-h-screen bg-gray-100 p-6'>
+    <section className='flex flex-col font-sans min-h-screen gap-y-8 bg-gray-100 p-6'>
       <div className='flex flex-col gap-y-4 gap-x-24 lg:flex-row lg:items-center'>
         <div className='flex gap-x-2 cursor-pointer' onClick={() => navigate('/')}>
           <ChevronLeft />
@@ -43,7 +43,7 @@ const JobDetails = () => {
           </form>
       </div>
       {
-        job && <DetailCard id={job.id} company_logo={job.company_logo} applicants={job.applicants} company_name={job.company_name} job_title={job.job_title} job_type={job.job_title} tags={job.tags} description={job.description} detail_desc={job.detail_desc} rating={job.rating} responsibilites={job.responsibilites} location={job.location} experience={job.experience} />
+        job && <DetailCard id={job.id} company_logo={job.company_logo} applicants={job.applicants} company_name={job.company_name} job_title={job.job_title} job_type={job.job_type} tags={job.tags} description={job.description} detail_desc={job.detail_desc} rating={job.rating} responsibilites={job.responsibilites} location={job.location} experience={job.experience} />
       }
     </section>
   )
