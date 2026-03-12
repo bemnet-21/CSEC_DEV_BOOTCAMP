@@ -3,6 +3,8 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getJob } from '../utils/job'
 import DetailCard from '../components/JobDetails/DetailCard'
+import SavedJobs from '../components/SavedJobs/SavedJobs'
+import RelatedJobs from '../components/RelatedJobs/RelatedJobs'
 
 const JobDetails = () => {
   const { id } = useParams()
@@ -42,9 +44,15 @@ const JobDetails = () => {
             </button>
           </form>
       </div>
-      {
-        job && <DetailCard id={job.id} company_logo={job.company_logo} applicants={job.applicants} company_name={job.company_name} job_title={job.job_title} job_type={job.job_type} tags={job.tags} description={job.description} detail_desc={job.detail_desc} rating={job.rating} responsibilites={job.responsibilites} location={job.location} experience={job.experience} />
-      }
+      <div className='flex flex-col gap-y-8 xl:flex-row'>
+
+        {
+          job && <DetailCard id={job.id} company_logo={job.company_logo} applicants={job.applicants} company_name={job.company_name} job_title={job.job_title} job_type={job.job_type} tags={job.tags} description={job.description} detail_desc={job.detail_desc} rating={job.rating} responsibilites={job.responsibilites} location={job.location} experience={job.experience} />
+        }
+        <div className='place-self-center xl:place-self-auto'>
+          <RelatedJobs />
+        </div>
+      </div>
     </section>
   )
 }

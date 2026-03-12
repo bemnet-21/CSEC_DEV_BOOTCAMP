@@ -15,8 +15,8 @@ const DetailCard = ({
   responsibilites 
 }: JobCardProps) => {
   return (
-    <div className='bg-white border border-slate-200 shadow-sm rounded-2xl overflow-hidden max-w-4xl mx-auto'>
-      <div className='p-5 md:p-8 border-b border-slate-100'>
+    <div className='flex flex-col bg-white border border-slate-200 shadow-sm rounded-2xl overflow-hidden max-w-4xl mx-auto p-5 md:p-8'>
+      <div className=' border-b border-slate-100'>
         <div className='flex flex-col md:flex-row md:items-start justify-between gap-6'>
           
           <div className='flex flex-col sm:flex-row gap-4 md:gap-6 items-center sm:items-start text-center sm:text-left'>
@@ -79,7 +79,7 @@ const DetailCard = ({
                     </div>
             </div>
         </div>
-        <div className='p-5 md:p-8 flex flex-col gap-y-8'>
+        <div className='flex flex-col gap-y-8'>
             <section>
                 <h2 className='text-lg font-bold text-slate-900 mb-3'>Job Description</h2>
                 <p className='text-slate-600 leading-relaxed'>
