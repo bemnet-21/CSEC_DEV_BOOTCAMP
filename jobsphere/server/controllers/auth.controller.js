@@ -1,4 +1,5 @@
-import { registerUser } from "../services/auth.service.js"
+import { loginUser, registerUser } from "../services/auth.service.js"
+import serverError from "../utils/serverErrorMessage.js"
 
 export const signup = async (req, res) => {
     const { firstName, lastName, username, email, password } = req.body
@@ -13,9 +14,23 @@ export const signup = async (req, res) => {
         })
 
     } catch(err) {
-        const message = err.message || "Internal server error"
-        const status = err.statusCode || 500
-        console.error(err)
-        res.status(status).json({ message })
+        serverError(res, err)
+    }
+}
+
+export const login = async (req, res) => {
+    const { username, password } = req.body
+    if(!username || !password) return res.status(400).json({ message : "Missing required fields" })
+
+    try {
+        const { user, token } = await loginUser(req.body)
+
+        res.status(200).json({ 
+            message : "Logged in successfully",
+            user,
+            token
+         })
+    } catch(err) {
+        serverError(res, err)
     }
 }
