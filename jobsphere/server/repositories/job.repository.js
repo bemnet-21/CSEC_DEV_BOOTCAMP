@@ -10,3 +10,8 @@ export const getAllJobs = async () => {
     const jobs = await Jobs.find({})
     return jobs
 }
+
+export const getJobById = async (id) => {
+    const job = await Jobs.findById(id)
+    return job
+}   
