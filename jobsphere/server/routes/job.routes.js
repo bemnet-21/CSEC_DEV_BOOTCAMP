@@ -1,10 +1,11 @@
 import express from 'express'
-import { addNewJob } from '../controllers/job.controller.js'
+import { addNewJob, getAllJobs } from '../controllers/job.controller.js'
 import protect from '../middleware/AuthMiddleware.js'
 import authorizeRoles from '../middleware/authorizeRoles.js'
 
 const router = express.Router()
 
 router.post('/', protect, authorizeRoles('recruiter'), addNewJob)
+router.get('/', protect, getAllJobs)
 
 export default router

@@ -1,4 +1,4 @@
-import { addJob } from "../services/job.service.js"
+import { addJob, getJobs } from "../services/job.service.js"
 import serverError from "../utils/serverErrorMessage.js"
 
 export const addNewJob = async (req, res) => {
@@ -10,6 +10,18 @@ export const addNewJob = async (req, res) => {
         res.status(201).json({
             message : "Job added successfully",
             data: job
+        })
+    } catch(err) {
+        serverError(res, err)
+    }
+}
+
+export const getAllJobs = async (req, res) => {
+    try {
+        const jobs = await getJobs()
+        res.status(200).json({
+            message : "Jobs fetched successfully",
+            data: jobs
         })
     } catch(err) {
         serverError(res, err)

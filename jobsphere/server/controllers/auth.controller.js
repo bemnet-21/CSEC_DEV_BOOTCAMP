@@ -7,9 +7,11 @@ export const signup = async (req, res) => {
 
     try {
         const { user, token } = await registerUser(req.body)
+        const userObj = user.toObject()
+        delete userObj.password
         res.status(201).json({
             message : "User created successfully",
-            user,
+            user: userObj,
             token
         })
 
@@ -25,9 +27,11 @@ export const login = async (req, res) => {
     try {
         const { user, token } = await loginUser(req.body)
 
+        const userObj = user.toObject()
+        delete userObj.password
         res.status(200).json({ 
             message : "Logged in successfully",
-            user,
+            user: userObj,
             token
          })
     } catch(err) {
