@@ -1,21 +1,32 @@
 import { Bookmark, Filter, MapPin, Search } from 'lucide-react'
 import Hero from '../components/Hero/Hero'
-import Header from '../components/layout/Header'
 import JobCard from '../components/Job/JobCard'
-import { JOBS } from '../constants'
 import type { JobCardProps } from '../interface'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FilterCard from '../components/Filter/FilterCard'
 import SavedJobs from '../components/SavedJobs/SavedJobs'
 import { useNavigate } from 'react-router-dom'
+import { getAllJobs } from '../api/jobs.service'
 
 function Home() {
 
   const navigate = useNavigate()  
-  const jobs: JobCardProps[] = JOBS
+  // const jobs: JobCardProps[] = JOBS
+  const [jobs, setJobs] = useState<JobCardProps[]>([])
   const [activePanel, setActivePanel] = useState<'filter' | 'saved' | null>(null)
   const toggleFilter = () => setActivePanel(prev => prev === 'filter' ? null : 'filter')
   const toggleSaved = () => setActivePanel(prev => prev === 'saved' ? null : 'saved')
+
+  const fetchJobs = async () => {
+    const res = await getAllJobs()
+    const data = res.data.data
+
+    setJobs(data)
+  }
+
+  useEffect(() => {
+    fetchJobs()
+  }, [])
 
 
   return (

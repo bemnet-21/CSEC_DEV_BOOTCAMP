@@ -26,3 +26,18 @@ export interface SavedJobCardProps {
     job_title: string
     tags: string[]
 }
+
+export interface User {
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    username: string
+    role: string
+}
+
+export interface LoginInterface {
+    message: string,
+    user: User,
+    token: string
+}
