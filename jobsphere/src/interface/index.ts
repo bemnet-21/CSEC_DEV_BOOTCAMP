@@ -41,3 +41,7 @@ export interface LoginInterface {
     user: User,
     token: string
 }
+
+export interface ProtectedRouteProps {
+  isAuthenticated: boolean;
+}

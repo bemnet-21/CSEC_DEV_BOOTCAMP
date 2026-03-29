@@ -20,9 +20,8 @@ const Login = () => {
       try {
         setLoading(true);
         const res = await login(username, password);
-        
-        // Type-safe dispatching
-        dispatch(loginSuccess(res.data.token));
+        const { token, user } = res.data;
+        dispatch(loginSuccess({ token, user }));
         
         navigate('/');
       } catch (err: any) {
@@ -42,7 +41,7 @@ const Login = () => {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row w-full min-h-screen font-sans">
+    <section className="flex flex-col justify-center lg:flex-row w-full min-h-screen font-sans">
       <div className="hidden lg:flex lg:w-1/2 bg-gray-300 items-center justify-center p-12">
         <img 
           src="/assets/rafiki.png" 
@@ -51,14 +50,14 @@ const Login = () => {
         />
       </div>
 
-      <div className="w-full lg:w-1/2 flex flex-col gap-y-12 items-start justify-center p-8 lg:p-20 bg-white">
+      <div className="w-full lg:w-1/2 flex flex-col gap-y-12 items-center justify-center p-8 lg:items-start lg:p-20 bg-white">
         
         <div className='bg-primaryBlue rounded-xl p-2'>
             <img src='/assets/logo.png' className="h-8" alt="logo" />
         </div>
 
         <div className="w-full max-w-md">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2 text-left">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center lg:text-left">
             Log in to your account
           </h1>
           

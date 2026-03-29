@@ -1,8 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import type { ProtectedRouteProps } from '../interface';
 
-interface ProtectedRouteProps {
-  isAuthenticated: boolean;
-}
+
 
 const ProtectedRoute = ({ isAuthenticated }: ProtectedRouteProps) => {
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
