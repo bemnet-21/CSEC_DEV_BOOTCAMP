@@ -6,7 +6,8 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
 import type { RootState } from "./store/store";
-import SignUp from "./pages/SignUp";
+import AddJob from "./pages/AddJob";
+import Signup from "./pages/Signup";
 
 function App() {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
@@ -22,12 +23,13 @@ function App() {
         />
         <Route 
         path="/signup" 
-        element={!isAuthenticated ? <SignUp /> : <Navigate to="/" />} 
+        element={!isAuthenticated ? <Signup /> : <Navigate to="/" />} 
         />
 
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/" element={<Home />} />
           <Route path="/job/:id" element={<JobDetails />} />
+          <Route path="/add-job" element={<AddJob />} />
         </Route>
 
         <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} />} />

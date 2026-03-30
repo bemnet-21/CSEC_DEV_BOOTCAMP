@@ -4,6 +4,7 @@ import MenuModal from '../Modal/MenuModal'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../../store/store'
 import { logout } from '../../store/authSlice'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -29,13 +30,13 @@ const Header = () => {
                 <div className='hidden items-center gap-x-4 lg:flex'>
                     {
                         (user?.role === 'recruiter') ? (
-                            <div className='bg-primaryBlue text-white px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-10px_rgba(var(--primary-blue-rgb),0.5)] hover:brightness-110 active:scale-95'>
+                            <Link to="/add-job" className='bg-primaryBlue text-white px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-10px_rgba(var(--primary-blue-rgb),0.5)] hover:brightness-110 active:scale-95'>
                                 Add Job
-                            </div>
+                            </Link>
                         ) : (
-                            <div className='bg-primaryBlue text-white px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-10px_rgba(var(--primary-blue-rgb),0.5)] hover:brightness-110 active:scale-95'>
+                            <Link to="/profile" className='bg-primaryBlue text-white px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-10px_rgba(var(--primary-blue-rgb),0.5)] hover:brightness-110 active:scale-95'>
                                 My Profile
-                            </div>
+                            </Link>
                         )
                     }
                     
@@ -46,12 +47,12 @@ const Header = () => {
             ) : (
 
                 <div className='hidden items-center gap-x-4 lg:flex'>
-                    <div className='bg-primaryBlue text-white px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-10px_rgba(var(--primary-blue-rgb),0.5)] hover:brightness-110 active:scale-95'>
+                    <Link to="/login" className='bg-primaryBlue text-white px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-10px_rgba(var(--primary-blue-rgb),0.5)] hover:brightness-110 active:scale-95'>
                         Login
-                    </div>
-                    <div className='border border-primaryBlue/30 text-primaryBlue px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:bg-primaryBlue/5 hover:border-primaryBlue active:scale-95'>
-                        Sign in
-                    </div>
+                    </Link>
+                    <Link to="/signup" className='border border-primaryBlue/30 text-primaryBlue px-5 py-2 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:bg-primaryBlue/5 hover:border-primaryBlue active:scale-95'>
+                        Sign up
+                    </Link>
                 </div>
             )
         }

@@ -13,7 +13,7 @@ export interface JobCardProps {
     detail_desc: string
     rating: number
     applicants: number
-    responsibilites: string[]
+    responsibilities: string[]
     location: string
     experience: string
     job_type:string
@@ -50,4 +50,17 @@ export interface LoginInterface {
 
 export interface ProtectedRouteProps {
   isAuthenticated: boolean;
+}
+
+export interface AddJobFormData {
+    company_name: string
+    job_title: string
+    location: string
+    experience: string
+    job_type: string
+    description: string
+    responsibilities: string[]
+    company_logo: string
+    tags: string[]
+    detail_desc: string
 }

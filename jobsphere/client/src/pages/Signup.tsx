@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { signup } from '../api/auth.service' // Assuming this exists
+import { signup } from '../api/auth.service'
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../store/authSlice';
 
@@ -131,7 +131,6 @@ const Signup = () => {
                 <option value="talent">Talent</option>
               </select>
               
-              {/* Custom Arrow Icon (Tailwind Only) */}
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
