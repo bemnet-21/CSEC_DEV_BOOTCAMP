@@ -15,9 +15,9 @@ const Header = () => {
   return (
     <header className='w-full h-24 flex justify-between items-center px-6 shadow-xl'>
         <h1 className='text-4xl font-bold text-white bg-primaryBlue p-2 rounded-xl cursor-pointer hover:bg-primaryBlue/20 hover:text-primaryBlue sm:hidden'>JS</h1>
-        <div className='hidden bg-primaryBlue rounded-xl cursor-pointer sm:block'>
+        <Link to={'/'} className='hidden bg-primaryBlue rounded-xl cursor-pointer sm:block'>
             <img src='/assets/logo.png' />
-        </div>
+        </Link>
         
         <div className='hidden gap-x-4 text-md md:flex lg:gap-x-8'>
             <div className='transform duration-300 cursor-pointer hover:scale-115 hover:text-primaryBlue/50'>Job Search</div>

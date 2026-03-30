@@ -2,8 +2,16 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { MenuModalProps } from '../../interface';
 import { X } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
+import { u } from 'framer-motion/client';
+import { logout } from '../../store/authSlice';
 
 const MenuModal = ({ isOpen, onClose } : MenuModalProps ) => {
+
+  const { isAuthenticated, user } = useSelector((state: RootState) => state.auth)
+  const dispatch = useDispatch()
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -11,6 +19,7 @@ const MenuModal = ({ isOpen, onClose } : MenuModalProps ) => {
       document.body.style.overflow = 'unset';
     }
   }, [isOpen]);
+
 
   const navLinks = [
     { name: 'Home', href: '#' },
@@ -64,14 +73,41 @@ const MenuModal = ({ isOpen, onClose } : MenuModalProps ) => {
             </nav>
 
             <div className="mt-auto pt-8 flex flex-col gap-y-4">
-              <div className='bg-primaryBlue text-white text-center px-2 py-3 rounded-xl cursor-pointer 
-                            transition-all duration-300 hover:brightness-110 active:scale-95 font-medium'>
-                Login
-              </div>
-              <div className='border border-primaryBlue/30 text-primaryBlue text-center px-2 py-3 rounded-xl cursor-pointer 
-                            transition-all duration-300 hover:bg-primaryBlue/5 active:scale-95 font-medium'>
-                Sign in
-              </div>
+              {
+                (isAuthenticated) ? (
+                  <>
+                    {
+                      (user?.role === 'recruiter') ? (
+                        <div className='bg-primaryBlue text-white text-center px-2 py-3 rounded-xl cursor-pointer 
+                                      transition-all duration-300 hover:brightness-110 active:scale-95 font-medium'>
+                          Add Job
+                        </div>
+                      ) : (
+                        <div className='bg-primaryBlue text-white text-center px-2 py-3 rounded-xl cursor-pointer 
+                                      transition-all duration-300 hover:brightness-110 active:scale-95 font-medium'>
+                          My Profile
+                        </div>
+                      )
+                    }
+                    <div className='border border-primaryBlue/30 text-primaryBlue text-center px-2 py-3 rounded-xl cursor-pointer 
+                                  transition-all duration-300 hover:bg-primaryBlue/5 active:scale-95 font-medium' onClick={() => dispatch(logout())}>
+                      Logout
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className='bg-primaryBlue text-white text-center px-2 py-3 rounded-xl cursor-pointer 
+                                  transition-all duration-300 hover:brightness-110 active:scale-95 font-medium'>
+                      Login
+                    </div>
+                    <div className='border border-primaryBlue/30 text-primaryBlue text-center px-2 py-3 rounded-xl cursor-pointer 
+                                  transition-all duration-300 hover:bg-primaryBlue/5 active:scale-95 font-medium'>
+                      Sign in
+                    </div>
+                  </>
+                  
+                )
+              }
             </div>
           </motion.div>
         </>
