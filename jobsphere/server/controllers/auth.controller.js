@@ -2,8 +2,8 @@ import { loginUser, registerUser } from "../services/auth.service.js"
 import serverError from "../utils/serverErrorMessage.js"
 
 export const signup = async (req, res) => {
-    const { firstName, lastName, username, email, password } = req.body
-    if(!firstName || !lastName || !username || !email || !password) return res.status(400).json({ message : "Missing required fields" })
+    const { firstName, lastName, username, email, password, role } = req.body
+    if(!firstName || !lastName || !username || !email || !password || !role) return res.status(400).json({ message : "Missing required fields" })
 
     try {
         const { user, token } = await registerUser(req.body)

@@ -13,7 +13,7 @@ const generateToken = (user) => {
     }
     const secret = process.env.JWT_SECRET
     const expiresIn = process.env.JWT_EXPIRES
-    return jwt.sign(payload, secret, { expiresIn })
+    return jwt.sign(payload, secret, { expiresIn: expiresIn })
 }
 
 export default generateToken
