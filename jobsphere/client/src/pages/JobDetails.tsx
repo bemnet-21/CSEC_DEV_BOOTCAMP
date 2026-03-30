@@ -1,15 +1,26 @@
 import { ChevronLeft, MapPin, Search } from 'lucide-react'
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getJob } from '../utils/job'
 import DetailCard from '../components/JobDetails/DetailCard'
-import SavedJobs from '../components/SavedJobs/SavedJobs'
 import RelatedJobs from '../components/RelatedJobs/RelatedJobs'
+import type { JobCardProps } from '../interface'
+import { getJob } from '../api/jobs.service'
 
 const JobDetails = () => {
+  const [job, setJob] = useState<JobCardProps>()
   const { id } = useParams()
-  const job = getJob(id ?? '')
+  console.log("ID:", id)
   const navigate = useNavigate()
+
+
+  const fetchJob = async () => {
+    const res = await getJob(id as string)
+    setJob(res.data.data)
+  }
+
+  useEffect(() => {
+    fetchJob()
+  }, [])
   return (
     <section className='flex flex-col font-sans min-h-screen gap-y-8 bg-gray-100 p-6'>
       <div className='flex flex-col gap-y-4 gap-x-24 lg:flex-row lg:items-center'>
@@ -47,7 +58,7 @@ const JobDetails = () => {
       <div className='flex flex-col gap-y-8 xl:flex-row'>
 
         {
-          job && <DetailCard id={job.id} company_logo={job.company_logo} applicants={job.applicants} company_name={job.company_name} job_title={job.job_title} job_type={job.job_type} tags={job.tags} description={job.description} detail_desc={job.detail_desc} rating={job.rating} responsibilites={job.responsibilites} location={job.location} experience={job.experience} />
+          job && <DetailCard _id={job._id} company_logo={job.company_logo} applicants={job.applicants} company_name={job.company_name} job_title={job.job_title} job_type={job.job_type} tags={job.tags} description={job.description} detail_desc={job.detail_desc} rating={job.rating} responsibilities={job.responsibilities} location={job.location} experience={job.experience} />
         }
         <div className='place-self-center xl:place-self-auto'>
           <RelatedJobs />

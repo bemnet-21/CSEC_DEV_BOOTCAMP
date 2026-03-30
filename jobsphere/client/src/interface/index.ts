@@ -4,7 +4,7 @@ export interface MenuModalProps {
 }
 
 export interface JobCardProps {
-    id: string
+    _id: string
     company_logo: string
     company_name: string
     job_title: string

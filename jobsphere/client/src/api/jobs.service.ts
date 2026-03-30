@@ -8,3 +8,7 @@ export const getAllJobs = async () => {
 export const createJob = async (jobData: AddJobFormData) => {
     return api.post('/jobs', jobData)
 }
+
+export const getJob = async (id: string) => {
+    return api.get(`/jobs/${id}`)
+}

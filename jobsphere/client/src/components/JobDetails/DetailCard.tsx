@@ -12,7 +12,7 @@ const DetailCard = ({
   experience, 
   applicants, 
   detail_desc, 
-  responsibilites 
+  responsibilities 
 }: JobCardProps) => {
   return (
     <div className='flex flex-col bg-white border border-slate-200 shadow-sm rounded-2xl overflow-hidden max-w-4xl mx-auto p-5 md:p-8'>
@@ -90,7 +90,7 @@ const DetailCard = ({
             <section>
                 <h2 className='text-lg font-bold text-slate-900 mb-3'>Key Responsibilities</h2>
                 <ul className='grid gap-y-3'>
-                    {responsibilites.map((res, index) => (
+                    {responsibilities.map((res, index) => (
                         <li key={index} className='flex items-start gap-x-3 text-slate-600'>
                             <span className='mt-1.5 h-1.5 w-1.5 rounded-full bg-primaryBlue shrink-0' />
                             <span className='leading-relaxed place-self-start'>{res}</span>

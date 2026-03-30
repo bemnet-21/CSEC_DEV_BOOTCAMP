@@ -86,7 +86,7 @@ function Home() {
           </div>
           <div className='grid grid-cols-1 gap-4'>
             {jobs.map((job) => (
-                <div key={job.id} className='cursor-pointer' onClick={() => navigate(`/job/${job.id}`)}>
+                <div key={job._id} className='cursor-pointer' onClick={() => navigate(`/job/${job._id}`)}>
                     <JobCard {...job} />
                 </div>
             ))}
