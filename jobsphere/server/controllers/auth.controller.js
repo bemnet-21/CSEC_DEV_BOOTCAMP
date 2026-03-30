@@ -9,6 +9,7 @@ export const signup = async (req, res) => {
         const { user, token } = await registerUser(req.body)
         const userObj = user.toObject()
         delete userObj.password
+        
         res.status(201).json({
             message : "User created successfully",
             user: userObj,
